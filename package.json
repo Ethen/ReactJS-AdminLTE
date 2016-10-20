@@ -1,16 +1,16 @@
 {
   "name": "adminlte-reactjs",
-  "version": "1.0.4",
+  "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "http://github.com/booleanhunter/ReactJS-AdminLTE"
+    "url": "http://github.com/misapprehand/ReactJS-AdminLTE"
   },
   "author": "booleanhunter",
   "license": "MIT",
   "original-credits": "admin-lte",
   "original-credits-repository": {
     "type": "git",
-    "url": "git://github.com/almasaeed2010/AdminLTE.git"
+    "url": "git://github.com/booleanhunter/ReactJS-AdminLTE.git"
   },
   "main": "src/widgets.src.js",
   "dependencies": {
@@ -25,10 +25,12 @@
     "handlebars": "^4.0.3",
     "jsx-loader": "^0.13.2",
     "raphael": "^2.1.4",
+    "if-env": "^1.0.0",      
     "react": "~0.14.7",
     "velocity-animate": "^1.2.3",
     "webpack": "^1.12.13",
-    "webpack-raphael": "^2.1.4"
+    "webpack-raphael": "^2.1.4",
+    "moment" : "~2.15"  
   },
   "devDependencies": {
     "chai": "^3.5.0",
@@ -40,6 +42,12 @@
     "webpack-dev-server": "~1.14.1"
   },
   "scripts": {
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:dev": "webpack-dev-server --hot --devtool eval --progress --colors -inline --content-base public/ --history-api-fallback",
+    "start:prod": "npm run build && node server.bundle.js",
+    "build:client": "webpack",
+    "build:server": "webpack --config webpack.server.config.js",
+    "build": "npm run build:client && npm run build:server",
     "test": "mocha test -u bdd -R spec"
   }
 }
