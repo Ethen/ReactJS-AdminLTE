@@ -1,6 +1,6 @@
 /**
  * @Author Ashwin Hariharan
- * @Details Webpack config file for adding new vendors, defining entry points and shimming modules. 
+ * @Details Webpack config file for adding new vendors, defining entry points and shimming modules.
  */
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
@@ -68,6 +68,7 @@ var config = {
         generalUIElements: './src/pages/ui-elements/general/js/main',
         vendors: ['react', 'reactDom', 'jquery', 'velocity', 'jqueryUi', 'bootstrap', 'moment', 'bootstrapDatepicker'],
         chartVendors: ['jquery', 'raphael', 'morris', 'jvectormap', 'jvectormapWorld'],
+        app1: ['./src/pages/app1/js/main']
     },
 
     output: {
@@ -82,8 +83,8 @@ var config = {
             new RegExp(lib_dir + './react-dom.js')
         ],
         loaders: [
-            { 
-                test: /\.jsx?$/, 
+            {
+                test: /\.jsx?$/,
                 loaders: ['react-hot'],
                 include: path.join(__dirname, 'public'),
                 exclude: /(node_modules|bower_components)/
@@ -111,14 +112,14 @@ View package.json for more configuration details
 0. During development:-
     Run webpack-dev-server --hot --inline and point your entry files to http://localhost:8080 in your HTML, for HMP
 
-1. Command:- 
-    webpack --profile --json > stats.json 
-        
+1. Command:-
+    webpack --profile --json > stats.json
+
     Will generate a JSON file called stats.json. Go to http://webpack.github.io/analyse/ and upload the file,
     and see all dependencies in a tree like structure
 
 2. Commands:-
-    --> npm run dev 
+    --> npm run dev
 
     Will run webpack-dev-server with the arguments specified (--devtool eval --progress --colors --content-base build)
 
@@ -126,9 +127,9 @@ View package.json for more configuration details
 2. --progress and --colors will just improve the feedback you get in the terminal when running your workflow.
 3. --content-base build points to where you have your custom index.html located.
 ----------
-Since we are using React, we need to evaluate XML along with JS.  This can be done by using jsx-loader. npm install jsx-loader --save will make 
+Since we are using React, we need to evaluate XML along with JS.  This can be done by using jsx-loader. npm install jsx-loader --save will make
 the module available, and then we specify the loader in here- {test:/\.js$/,loader: 'jsx-loader'}. This tells
-WebPack that whenever we try to require something that ends with .js it should run the contents of that file through the jsx-loader. 
+WebPack that whenever we try to require something that ends with .js it should run the contents of that file through the jsx-loader.
 ----------
 
   "scripts": {
