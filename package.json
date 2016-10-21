@@ -23,14 +23,15 @@
     "consolidate": "^0.13.1",
     "express": "^4.13.3",
     "handlebars": "^4.0.3",
+    "if-env": "^1.0.0",
     "jsx-loader": "^0.13.2",
+    "moment": "~2.15",
     "raphael": "^2.1.4",
-    "if-env": "^1.0.0",      
     "react": "~0.14.7",
+    "transfer-webpack-plugin": "^0.1.4",
     "velocity-animate": "^1.2.3",
     "webpack": "^1.12.13",
-    "webpack-raphael": "^2.1.4",
-    "moment" : "~2.15"  
+    "webpack-raphael": "^2.1.4"
   },
   "devDependencies": {
     "chai": "^3.5.0",

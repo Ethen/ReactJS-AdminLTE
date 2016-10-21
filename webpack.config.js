@@ -5,6 +5,7 @@
 var webpack = require('webpack');
 var UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
 var path = require("path");
+var TransferWebpackPlugin = require('transfer-webpack-plugin');
 //var env = require('yargs').argv.mode;
 
 var lib_dir = __dirname + '/public/libraries',
@@ -56,8 +57,11 @@ var config = {
             minimize: true
         }),
         new webpack.optimize.DedupePlugin(),
-        new webpack.optimize.OccurenceOrderPlugin()
-
+        new webpack.optimize.OccurenceOrderPlugin(),
+        //把指定文件夹下的文件复制到指定的目录
+        new TransferWebpackPlugin([
+          {from: 'views'}
+        ], path.resolve(__dirname,""))
     ],
     devtool: 'cheap-module-source-map',
     entry: {
@@ -69,6 +73,7 @@ var config = {
         vendors: ['react', 'reactDom', 'jquery', 'velocity', 'jqueryUi', 'bootstrap', 'moment', 'bootstrapDatepicker'],
         chartVendors: ['jquery', 'raphael', 'morris', 'jvectormap', 'jvectormapWorld'],
         app1: ['./src/pages/app1/js/main']
+
     },
 
     output: {
